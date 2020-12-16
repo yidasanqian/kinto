@@ -1,18 +1,16 @@
-* Kintohub已经封了这个项目，所以只能部署到Heroku了，下面是部署到Heroku的方法。
-
-> 提醒： 滥用可能导致账户被BAN！！！[Telegram讨论群](https://t.me/starts_sh_group)  
+> 提醒： 滥用可能导致账户被BAN！！！
 
 Heroku上部署v2ray，可更改传输协议vmess和vless，默认是vmess传输，部署时在v2ray protocol选项框改成你喜欢的协议即可．
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/yeahwu/kinto)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/yidasanqian/kinto)
 
-#### 部署服务端
+### 部署服务端
 
 点击上面紫色`Deploy to Heroku`，会跳转到heroku app创建页面，填上app的名字，选择你喜欢的传输协议vmess或者vless，最后换上从 https://www.uuidgenerator.net/ 拷贝过来的UUID，点击下面deploy创建APP，完成后会生成一个链接，点击链接显示“Bad Request”就说明部署成功了！
 
 需要记下的是appname,和你填入的UUID，下面就可以设置客户端翻墙了。
 
-#### 客户端设置
+### 客户端设置
 
 注意和服务端协议保持一致，选择vmess或者vless，其它照图填写：
 
@@ -25,7 +23,7 @@ Heroku上部署v2ray，可更改传输协议vmess和vless，默认是vmess传输
 
 端口(port) : 80
 
-用户ID(uuid) : c95ef1d4-f3ac-4586-96e9-234a37dda068
+用户ID(uuid) : 950114fb-b969-4b5a-a307-07e4a6d2eba2
 
 加密方式(security) : aes-128-gcm
 
@@ -60,7 +58,7 @@ Heroku上部署v2ray，可更改传输协议vmess和vless，默认是vmess传输
             "port": 443,
             "users": [
               {
-                "id": "c95ef1d4-f3ac-4586-96e9-234a37dda068"
+                "id": "950114fb-b969-4b5a-a307-07e4a6d2eba2"
               }
             ]
           }
@@ -76,7 +74,7 @@ Heroku上部署v2ray，可更改传输协议vmess和vless，默认是vmess传输
 }
 ```
 
-#### Workers反代
+### Workers反代
 
 ```
 addEventListener(
@@ -84,11 +82,9 @@ addEventListener(
         let url=new URL(event.request.url);
         url.hostname="kinto-404.us1.kinto.io";
         let request=new Request(url,event.request);
-        event. respondWith(
+        event.respondWith(
             fetch(request)
         )
     }
 )
 ```
-
-捐赠本博：https://starts.sh/donation.html
